@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../image/favicon.ico" type="image/x-icon"/>
+    <title>Hydra Cheatsheet</title>
+</head>
+<body>
+    <header>
+        <h1 class="site-title">Pentest Tools</h1>
+        <div class="dropdown">
+            <a href="../tool/tool.html" class="dropbtn">Tools</a>
+        </div>
+        <div class="dropdown">
+            <a href="../Cheatsheet/cheatsheet.html" class="dropbtn">CheatSheet</a>
+        </div>
+        <div class="dropdown">
+            <a href="../index.html" class="dropbtn">Acceuil</a>
+        </div>
+        <br>
+    </header>
+    <main>
+        <h1>Hydra Cheatsheet</h1>
+        <div>
+            <h2>How to Install Hydra</h2>
+            <section>
+                <p>Hydra installation:</p>
+                <div class="terminal">
+                    <div class="terminal-title">Installation</div>
+                    <span class="prompt"><span style="color: #2ecc71;">username@machine_name</span>:<span style="color: #0074cc;">~</span><span style="color: #ffffff;">$ sudo apt install hydra</span></span>
+                </div>
+            </section>
+        </div>
+        <div>
+            <h2>Useful Commands for Hydra</h2>
+            <p>
+                <br>-l [login]: Specify a single username
+                <br>-L [file]: Specify a file containing usernames
+                <br>-p [password]: Specify a single password
+                <br>-P [file]: Specify a file containing passwords
+                <br>-s [port]: Specify the port to use
+                <br>-t [tasks]: Specify the number of parallel tasks
+                <br>-v / -V: Verbose mode / Very verbose mode
+                <br>-e [nsr]: Try null password / try the login as the password / try a reverse login
+                <br>-o [file]: Write found login/password pairs to file
+                <br>-f: Exit after the first found login/password pair
+            </p>
+        </div>
+        <div>
+            <h2>Examples of Hydra Commands</h2>
+            <section>
+                <p>Brute force SSH with a single username and a password list:</p>
+                <div class="terminal">
+                    <div class="terminal-title">SSH Brute-force</div>
+                    <span class="prompt"><span style="color: #2ecc71;">username@machine_name</span>:<span style="color: #0074cc;">~</span><span style="color: #ffffff;">$ hydra -l admin -P /path/to/password_list.txt ssh://target_ip</span></span>
+                </div>
+            </section>
+            <br>
+            <section>
+                <p>Brute force FTP with a username list and a password list:</p>
+                <div class="terminal">
+                    <div class="terminal-title">FTP Brute-force</div>
+                    <span class="prompt"><span style="color: #2ecc71;">username@machine_name</span>:<span style="color: #0074cc;">~</span><span style="color: #ffffff;">$ hydra -L /path/to/user_list.txt -P /path/to/password_list.txt ftp://target_ip</span></span>
+                </div>
+            </section>
+            <br>
+            <section>
+                <p>Brute force a web form using POST requests:</p>
+                <div class="terminal">
+                    <div class="terminal-title">Web Form Brute-force</div>
+                    <span class="prompt"><span style="color: #2ecc71;">username@machine_name</span>:<span style="color: #0074cc;">~</span><span style="color: #ffffff;">$ hydra -l admin -P /path/to/password_list.txt target_ip http-post-form "/login.php:username=^USER^&password=^PASS^:F=incorrect"</span></span>
+                </div>
+            </section>
+            <br>
+            <section>
+                <p>Brute force with specified port and number of parallel tasks:</p>
+                <div class="terminal">
+                    <div class="terminal-title">Specified Port and Tasks</div>
+                    <span class="prompt"><span style="color: #2ecc71;">username@machine_name</span>:<span style="color: #0074cc;">~</span><span style="color: #ffffff;">$ hydra -l admin -P /path/to/password_list.txt -s 2222 -t 4 ssh://target_ip</span></span>
+                </div>
+            </section>
+            <br>
+            <section>
+                <p>Brute force RDP with exit after first found pair:</p>
+                <div class="terminal">
+                    <div class="terminal-title">RDP Brute-force</div>
+                    <span class="prompt"><span style="color: #2ecc71;">username@machine_name</span>:<span style="color: #0074cc;">~</span><span style="color: #ffffff;">$ hydra -l admin -P /path/to/password_list.txt -f rdp://target_ip</span></span>
+                </div>
+            </section>
+            <br>
+            <section>
+                <p>Write found login/password pairs to a file:</p>
+                <div class="terminal">
+                    <div class="terminal-title">Output to File</div>
+                    <span class="prompt"><span style="color: #2ecc71;">username@machine_name</span>:<span style="color: #0074cc;">~</span><span style="color: #ffffff;">$ hydra -l admin -P /path/to/password_list.txt -o found_credentials.txt ssh://target_ip</span></span>
+                </div>
+            </section>
+            <br>
+        </div>
+    </main>
+</body>
+</html>
